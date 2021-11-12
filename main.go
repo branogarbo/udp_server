@@ -14,7 +14,7 @@ func random(min, max int) int {
 }
 
 func main() {
-	s, err := net.ResolveUDPAddr("udp4", ":3000")
+	s, err := net.ResolveUDPAddr("udp4", ":3333")
 	if err != nil {
 		fmt.Println(err)
 		return
