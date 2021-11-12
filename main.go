@@ -26,12 +26,18 @@ func main() {
 		return
 	}
 
+	fmt.Println(connection.LocalAddr())
+
 	defer connection.Close()
 	buffer := make([]byte, 1024)
 	rand.Seed(time.Now().Unix())
 
 	for {
 		n, addr, err := connection.ReadFromUDP(buffer)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 		fmt.Print("-> ", string(buffer[0:n-1]))
 
 		if strings.TrimSpace(string(buffer[0:n])) == "STOP" {
